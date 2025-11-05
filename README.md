@@ -5,8 +5,10 @@ A ASCENSÃO PROPOSICIONAL
 | Nome Completo | Usuário GitHub |
 
 | Thainá Pontes | @thainapontes |
-| [Nome do Membro 2] | @[usuario-github-2] |
-| [Nome do Membro 3] | @[usuario-github-3] |
+| Michel dos Santos Serpa | @serpamichel |
+| Lucas Vinicius Oliveira da Silva | @lucas-viniicius |
+| Hugo Vinicius de Lima Mendonça | @BRK-ugz |
+| Luiz Fernando Ramos Toledo | @fernandoToledo69 |
 
 
 - Dados da Disciplina e Instituição
@@ -15,14 +17,12 @@ Disciplina: Programação Imperativa e Funcional - 2025.2
 Instituição de Ensino: CESAR School
 
 - Nome do Jogo Desenvolvido
+  Pouprosições
 
-**A Ascensão Proposicional**
-
----
 
 - Breve Descrição do Jogo 
 
-O jogo coloca o aluno em uma jornada desesperada para alcançar a Graça Lógica, com ajuda do Professor Guilherme, saltando sobre plataformas. O aluno deve usar seu conhecimento de Proposições Lógicas para garantir que a plataforma não seja uma falácia e evitar a queda. O Professor Diego, personificando o erro e a reprovação, tenta puxar o aluno para o Inferno da Reprovação (o chão). A pontuação é baseada na altura alcançada e no número de perguntas lógicas respondidas corretamente.
+Inspirado no mini-game Sky Jump do Pou, nosso  jogo coloca o aluno em uma jornada desesperada para alcançar a Graça Lógica, com ajuda do Professor Guilherme, saltando sobre plataformas. O aluno deve usar seu conhecimento de Proposições Lógicas para garantir que a plataforma não seja uma falácia e evitar a queda. O Professor Diego, personificando o erro e a reprovação, tenta puxar o aluno para o Inferno da Reprovação (o chão). A pontuação é baseada na altura alcançada e no número de perguntas lógicas respondidas corretamente.
 
 - Instruções Detalhadas para Compilar e Executar o Jogo
 
