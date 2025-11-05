@@ -1,1 +1,31 @@
-# Ascensao-Proposicional
+A ASCENSÃO PROPOSICIONAL
+
+- Membros da Equipe
+
+| Nome Completo | Usuário GitHub |
+
+| Thainá Pontes | @thainapontes |
+| [Nome do Membro 2] | @[usuario-github-2] |
+| [Nome do Membro 3] | @[usuario-github-3] |
+
+
+- Dados da Disciplina e Instituição
+
+Disciplina: Programação Imperativa e Funcional - 2025.2
+Instituição de Ensino: CESAR School
+
+- Nome do Jogo Desenvolvido
+
+**A Ascensão Proposicional**
+
+---
+
+- Breve Descrição do Jogo 
+
+O jogo coloca o aluno em uma jornada desesperada para alcançar a Graça Lógica, com ajuda do Professor Guilherme, saltando sobre plataformas. O aluno deve usar seu conhecimento de Proposições Lógicas para garantir que a plataforma não seja uma falácia e evitar a queda. O Professor Diego, personificando o erro e a reprovação, tenta puxar o aluno para o Inferno da Reprovação (o chão). A pontuação é baseada na altura alcançada e no número de perguntas lógicas respondidas corretamente.
+
+- Instruções Detalhadas para Compilar e Executar o Jogo
+
+(As instruções detalhadas de compilação serão finalizadas na Entrega 2, após a definição do `Makefile`.)
+
+
