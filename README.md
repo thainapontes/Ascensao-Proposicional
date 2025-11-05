@@ -3,7 +3,6 @@ A ASCENSÃO PROPOSICIONAL
 - Membros da Equipe
 
 | Nome Completo | Usuário GitHub |
-
 | Thainá Pontes | @thainapontes |
 | Michel dos Santos Serpa | @serpamichel |
 | Lucas Vinicius Oliveira da Silva | @lucas-viniicius |
@@ -17,7 +16,7 @@ Disciplina: Programação Imperativa e Funcional - 2025.2
 Instituição de Ensino: CESAR School
 
 - Nome do Jogo Desenvolvido
-  Pouprosições
+Pouprosições
 
 
 - Breve Descrição do Jogo 
