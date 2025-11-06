@@ -5,7 +5,7 @@ A ASCENSÃO PROPOSICIONAL
 | Nome Completo | Usuário GitHub |
 | Thainá Pontes | @thainapontes |
 | Michel dos Santos Serpa | @serpamichel |
-| Lucas Vinicius Oliveira da Silva | @lucas-viniicius |
+| Lucas Vinicius Oliveira da Silva | @Lucas-Viniicius |
 | Hugo Vinicius de Lima Mendonça | @BRK-ugz |
 | Luiz Fernando Ramos Toledo | @fernandoToledo69 |
 
