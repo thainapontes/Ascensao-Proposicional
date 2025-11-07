@@ -16,7 +16,7 @@ Disciplina: Programação Imperativa e Funcional - 2025.2
 Instituição de Ensino: CESAR School
 
 - Nome do Jogo Desenvolvido
-Pouprosições
+**PouProsições**
 
 
 - Breve Descrição do Jogo 
