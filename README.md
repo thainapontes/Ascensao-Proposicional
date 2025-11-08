@@ -8,6 +8,7 @@ A ASCENSÃO PROPOSICIONAL
 | Lucas Vinicius Oliveira da Silva | @Lucas-Viniicius |
 | Hugo Vinicius de Lima Mendonça | @BRK-ugz |
 | Luiz Fernando Ramos Toledo | @fernandoToledo69 |
+| Davi Lucas da Silva Pinheiro | @davi081dev |
 
 
 - Dados da Disciplina e Instituição
