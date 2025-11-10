@@ -12,7 +12,7 @@ int main() {
     //escreve o totulo do jogo no topo 
     screenSetColor(YELLOW, BLACK);
     screenGotoxy(SCRSTARTX, SCRSTARTY);
-    printf("PouProsições, A ascensão Proprosicional");
+    printf("PouProsições, A ascensão Proposicional");
     screenSetNormal();
 
     // LOOP PRINCIPAL 
