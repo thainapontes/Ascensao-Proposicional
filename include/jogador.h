@@ -7,7 +7,7 @@
 struct Jogador {
     int x; // Posição horizontal na tela
     int y; // Posição vertical na tela
-    int velocidade_y; //  Campo para simulação de física (velocidade vertical)
+    int velocidade_y; //  Campo para simulação de física (aq ele vai simular queda e pulo)
     int pontuacao;
     int vidas;
     char simbolo; 
