@@ -6,7 +6,7 @@ A ASCENSÃO PROPOSICIONAL
 | Thainá Pontes | @thainapontes |
 | Michel dos Santos Serpa | @serpamichel |
 | Lucas Vinicius Oliveira da Silva | @Lucas-Viniicius |
-| Hugo Vinicius de Lima Mendonça | @BRK-ugz |
+| Hugo Vinicius de Lima Mendonça | @BRKHugz |
 | Luiz Fernando Ramos Toledo | @fernandoToledo69 |
 | Davi Lucas da Silva Pinheiro | @davi081dev |
 
