@@ -50,5 +50,33 @@ A CLI-lib e a biblioteca ncurses são nativas de ambientes UNIX (Linux/macOS). P
 Recomendamos fortemente o uso do WSL (Windows Subsystem for Linux) ou o Git Bash para garantir a compatibilidade total com as funções de terminal do jogo.
 <img width="655" height="123" alt="image" src="https://github.com/user-attachments/assets/f844881a-dcf1-4b46-8c95-f3567d983a9f" />
 
+Instruções de Instalação no WSL/Linux:
+Certifique-se de que os pacotes essenciais estejam instalados antes de compilar:
+<img width="411" height="44" alt="image" src="https://github.com/user-attachments/assets/516dde31-8b13-4f65-9080-4f5ab1432d40" />
+
+3. Instruções Detalhadas de Compilação e Execução
+Siga estes passos na pasta raiz do projeto, dentro do terminal Linux/WSL/Git Bash:
+
+A) Compilação do Projeto
+O comando make irá ler o Makefile, criar a pasta build/, compilar todos os módulos e gerar o executável final:
+Navegue até o diretório raiz do projeto:
+<img width="347" height="24" alt="image" src="https://github.com/user-attachments/assets/06fa1028-ac76-4777-810b-5c43135ec224" />
+Execute o comando make:
+<img width="69" height="28" alt="image" src="https://github.com/user-attachments/assets/f17e6567-c09f-4dd5-bf6a-263f900d854a" />
+
+B) Execução do Jogo
+Após a compilação bem-sucedida, o jogo pode ser iniciado usando a regra run do Makefile:
+<img width="108" height="33" alt="image" src="https://github.com/user-attachments/assets/cab94eea-1d6a-480c-88fd-6d444f134d75" />
+O jogo solicitará primeiro o caractere de personalização do seu jogador no console de texto.
+Em seguida, ele entrará na tela gráfica do terminal.
+
+C) Limpeza (Remoção de Arquivos Temporários)
+Para remover o executável (pouproposicoes) e todos os arquivos objetos (.o) da pasta build/, utilize a regra clean. Isso é útil para garantir uma compilação totalmente limpa:
+<img width="112" height="25" alt="image" src="https://github.com/user-attachments/assets/741f2107-34c1-453c-b450-661cf366b912" />
+
+
+
+
+
 
 
