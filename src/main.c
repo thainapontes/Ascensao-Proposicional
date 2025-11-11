@@ -12,7 +12,9 @@ int main() {
 
     // FASE 1: Coleta de Dados (Antes de inicializar o modo gráfico)
     printf("--- BEM-VINDO(A) A POUPROSIÇÕES ---\n");
-    printf(" Voc
+    printf(" Você deverá enfrentar a  jornada desesperada para alcançar a Graça Lógica, com ajuda do Professor Guilherme, saltando sobre plataformas.Você deve usar seu conhecimento de Proposições Lógicas para 
+        garantir que a plataforma não seja uma falácia e evitar a queda. O Professor Diego, personificando o erro e a reprovação,
+        tentará puxar o aluno para o Inferno da Reprovação (o chão). A pontuação é baseada na altura alcançada e no número de perguntas lógicas que você responder corretamente.\n");
     printf("Digite o caractere que irá representar seu Jogador (ex: @, P, J): ");
     
     // Lê o caractere escolhido pelo usuário
@@ -20,15 +22,19 @@ int main() {
         simbolo_escolhido = '@'; // Fallback: usa '@' se a leitura falhar
     }
 
-    // ----------------------------------------------------
+    
     // FASE 2: Inicialização do Jogo e do Modo Gráfico
-    // ----------------------------------------------------
     
     screenInit(1); // inicializar a tela e desenha as bordas
     keyboardInit(); // configura ro teclado para leitura inst
     timerInit(50); // inicializar o timer 
     
-    //escreve o totulo do jogo no topo 
+    Jogador_Inicializar(&meu_jogador);
+    
+    // SOBRESCREVE o símbolo padrão ('@') pelo símbolo escolhido pelo usuário
+    meu_jogador.simbolo = simbolo_escolhido;
+    
+    //escreve o titulo do jogo no topo 
     screenSetColor(YELLOW, BLACK);
     screenGotoxy(SCRSTARTX, SCRSTARTY);
     printf("PouProsições, A ascensão Proposicional");
