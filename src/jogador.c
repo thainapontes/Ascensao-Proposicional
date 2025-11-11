@@ -91,6 +91,34 @@ void Jogador_Atualizar(Jogador *jogador, Plataforma plataformas[], int num_plata
             break; 
         }
     }
+    // FUNÇÃO CRÍTICA: FÍSICA E COLISÃO
+void Jogador_Atualizar(Jogador *jogador, Plataforma plataformas[], int num_plataformas) {
+    
+    // 1. APLICAÇÃO DA GRAVIDADE E MOVIMENTO ...
+    // ...
+    
+    // 2. VERIFICAÇÃO DE COLISÃO COM PLATAFORMAS
+    for (int i = 0; i < num_plataformas; i++) {
+        
+        if (jogador->velocidade_y > 0 && Plataforma_VerificarColisao(jogador, &plataformas[i])) {
+            
+            // Colisão detectada: Pouso ...
+            
+            // Lógica de Interação com Plataformas
+            if (plataformas[i].tipo == QUEBRAVEL && plataformas[i].usada == 0) {
+                plataformas[i].usada = 1; 
+            }
+            
+            // Lógica de ATIVAÇÃO DA PERGUNTA
+            if (plataformas[i].tipo == PERGUNTA && plataformas[i].usada == 0) {
+                // NOTIFICA O MAIN.C que é hora da pergunta
+                jogador->ativar_pergunta = 1; // <--- FLAG ATIVADA AQUI
+                plataformas[i].usada = 1;      // Marca para não ativar de novo
+            }
+            
+            break; 
+        }
+    }
 
     // 3. CHECAGEM DE CHÃO/FIM DE JOGO
     if (jogador->y >= SCRENDY) {
