@@ -84,3 +84,10 @@ void Jogador_Desenhar(Jogador *jogador) {
     
     // 4. Reseta a cor para o padrão (boa prática)
     screenSetNormal();
+
+
+long long Jogador_CalcularFatorial(int n) {
+    if (n <= 1) {
+        return 1;
+    }
+    return n * Jogador_CalcularFatorial(n - 1);
