@@ -15,7 +15,7 @@ int main() {
     printf(" Você deverá enfrentar a  jornada desesperada para alcançar a Graça Lógica, com ajuda do Professor Guilherme, saltando sobre plataformas.Você deve usar seu conhecimento de Proposições Lógicas para 
         garantir que a plataforma não seja uma falácia e evitar a queda. O Professor Diego, personificando o erro e a reprovação,
         tentará puxar o aluno para o Inferno da Reprovação (o chão). A pontuação é baseada na altura alcançada e no número de perguntas lógicas que você responder corretamente.\n");
-    printf("Digite o caractere que irá representar seu Jogador (ex: @, P, J): ");
+    printf("Agora, digite o caractere que irá representar seu Jogador (ex: @, P, J): ");
     
     // Lê o caractere escolhido pelo usuário
     if (scanf(" %c", &simbolo_escolhido) != 1) {
