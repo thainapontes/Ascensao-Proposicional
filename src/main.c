@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.io>
+#include <string.h>
 
 // Módulos da CLI-lib
 #include "screen.h"     
