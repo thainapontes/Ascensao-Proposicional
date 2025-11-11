@@ -1,8 +1,18 @@
 #ifndef __PERGUNTA_H__
 #define __PERGUNTA_H__
 
-#include "tipos.h" 
-#include "jogador.h" // Pode ser necessário para atualizar a pontuação/vidas
+#include "tipos.h" // Contém a declaração antecipada e outros tipos
+#include "jogador.h" // Para atualizar pontuação/vidas
+
+
+// O COMPILADOR PRECISA DISSO PARA CRIAR O BANCO DE PERGUNTAS (array) em pergunta.c
+
+typedef struct {
+    char *texto; 
+    char *opcoes[4]; 
+    int respostaCorreta; 
+} Pergunta; 
+
 
 void Pergunta_InicializarBanco();
 
