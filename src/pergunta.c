@@ -1,17 +1,17 @@
-#include "pergunta.h"
-#include "screen.h"
-#include "jogador.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h> // Para a função toupper()
-
+#include "pergunta.h"
+#include "screen.h"
+#include "jogador.h"
+#define NUM_MAX_PERGUNTAS 5
 // ---------------------------------
 // BANCO DE DADOS E VARIÁVEIS GLOBAIS
 // ---------------------------------
 
 // Definição estática do banco de perguntas (para simplificar a Entrega 2)
-#define NUM_MAX_PERGUNTAS 5
+
 static Pergunta banco_perguntas[NUM_MAX_PERGUNTAS];
 static int banco_inicializado = 0;
 
