@@ -44,6 +44,8 @@ Variáveis Chave:
 CFLAGS: Contém as flags de qualidade (-Wall, -Wextra) e o caminho para os arquivos de cabeçalho (-Iinclude).
 LDFLAGS: Garante a linkagem com a biblioteca ncurses (-lncurses), que é a base da nossa CLI-lib para manipulação do terminal.
 
+---
+
 2. Pré-requisitos e Adaptação para Windows
 
 A CLI-lib e a biblioteca ncurses são nativas de ambientes UNIX (Linux/macOS). Para usuários de Windows, a execução deve ser feita em um ambiente que emule o sistema Linux.
@@ -53,6 +55,8 @@ Recomendamos fortemente o uso do WSL (Windows Subsystem for Linux) ou o Git Bash
 Instruções de Instalação no WSL/Linux:
 Certifique-se de que os pacotes essenciais estejam instalados antes de compilar:
 <img width="411" height="44" alt="image" src="https://github.com/user-attachments/assets/516dde31-8b13-4f65-9080-4f5ab1432d40" />
+
+---
 
 3. Instruções Detalhadas de Compilação e Execução
 Siga estes passos na pasta raiz do projeto, dentro do terminal Linux/WSL/Git Bash:
