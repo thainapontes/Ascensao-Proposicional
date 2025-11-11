@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h> // Necessário para toupper (se for usado na lógica de resposta)
 
 // Módulos da CLI-lib
 #include "screen.h"     
@@ -24,6 +25,7 @@
 // ==============================================================
 
 static Plataforma plataformas[NUM_PLATAFORMAS]; 
+static Pergunta pergunta_atual; // Armazena a pergunta ativa
 
 // Protótipos das funções auxiliares (para uso interno)
 static void InicializarPlataformas();
@@ -31,7 +33,11 @@ static void DesenharHUD(Jogador *jogador);
 static void AplicarBonusRecursivo(Jogador *jogador);
 static int EncontrarProximaPosicaoY();
 static void AtualizarScrollEPlataformas(Jogador *jogador);
+static void ProcessarPergunta(Jogador *jogador); // <--- NOVO PROTÓTIPO
 
+// -------------------------------------------------------------
+// IMPLEMENTAÇÕES DAS FUNÇÕES AUXILIARES
+// -------------------------------------------------------------
 
 /**
  * Funcao auxiliar para gerar o conjunto inicial de plataformas.
@@ -39,7 +45,6 @@ static void AtualizarScrollEPlataformas(Jogador *jogador);
 static void InicializarPlataformas() {
     int y_pos = SCRENDY - 5; 
     
-    // Laço para gerar o primeiro conjunto de plataformas de baixo para cima
     for (int i = 0; i < NUM_PLATAFORMAS; i++) {
         Plataforma_GerarNova(&plataformas[i], y_pos);
         y_pos -= DISTANCIA_ENTRE_PLATAFORMAS; 
@@ -65,12 +70,10 @@ static void DesenharHUD(Jogador *jogador) {
 static void AplicarBonusRecursivo(Jogador *jogador) {
     int n_fatorial = 3; 
     
-    // CHAMADA RECURSIVA
     long long bally_bonus = Jogador_CalcularFatorial(n_fatorial); 
     
     jogador->pontuacao += bally_bonus;
 
-    // Alerta na tela
     screenGotoxy(SCRSTARTX + 2, SCRENDY - 2);
     screenSetColor(YELLOW, BLACK);
     printf("✨ BÔNUS RECURSIVO! %d! = %lld Pts. Continue!", n_fatorial, bally_bonus);
@@ -87,13 +90,11 @@ static void AplicarBonusRecursivo(Jogador *jogador) {
  */
 static int EncontrarProximaPosicaoY() {
     int min_y = SCRENDY;
-    // Encontra a plataforma que está mais próxima do topo (menor valor de y)
     for (int i = 0; i < NUM_PLATAFORMAS; i++) {
         if (plataformas[i].y < min_y) {
             min_y = plataformas[i].y;
         }
     }
-    // Retorna a posição acima da plataforma mais alta, respeitando a distância
     return min_y - DISTANCIA_ENTRE_PLATAFORMAS; 
 }
 
@@ -103,33 +104,24 @@ static int EncontrarProximaPosicaoY() {
  */
 static void AtualizarScrollEPlataformas(Jogador *jogador) {
     
-    // Altura de Ativação do Scroll (Ex: 1/3 da tela de cima para baixo)
     const int ALTURA_DE_SCROLL = SCRENDY / 3;
     
-    // Condição: O jogador passou do limite de scroll e está subindo.
     if (jogador->y < ALTURA_DE_SCROLL) {
         
-        // 1. Calcula o deslocamento (quanto o mundo precisa descer)
         int deslocamento = ALTURA_DE_SCROLL - jogador->y;
         
-        // 2. MOVE O JOGADOR DE VOLTA (Fixa na posição de scroll)
         jogador->y = ALTURA_DE_SCROLL; 
 
-        // 3. MOVIMENTA TODAS AS PLATAFORMAS (SCROLL)
         for (int i = 0; i < NUM_PLATAFORMAS; i++) {
             plataformas[i].y += deslocamento;
         }
 
-        // 4. ATUALIZAÇÃO DA PONTUAÇÃO (pela distância percorrida)
         jogador->pontuacao += deslocamento; 
         
-        // 5. GERAÇÃO CONTÍNUA
         for (int i = 0; i < NUM_PLATAFORMAS; i++) {
             
-            // Verifica se a plataforma saiu pela parte inferior da tela
             if (plataformas[i].y > SCRENDY) {
                 
-                // Regenera a plataforma no topo
                 int nova_y = EncontrarProximaPosicaoY();
                 Plataforma_GerarNova(&plataformas[i], nova_y);
             }
@@ -137,6 +129,32 @@ static void AtualizarScrollEPlataformas(Jogador *jogador) {
     }
 }
 
+/**
+ * LÓGICA DE PERGUNTA: Pausa o jogo e gerencia o ciclo de input/processamento.
+ */
+static void ProcessarPergunta(Jogador *jogador) {
+    char resposta_char;
+
+    // 1. Gera e Desenha a interface (oculta a tela de jogo, mostra a pergunta)
+    Pergunta_GerarAleatoria(&pergunta_atual);
+    Pergunta_DesenharInterface(&pergunta_atual);
+    
+    // 2. Coleta a resposta (pausa o Game Loop até receber A, B, C, ou D)
+    while (1) { 
+        resposta_char = readch();
+        resposta_char = toupper(resposta_char); // Converte para maiúscula
+        
+        if (resposta_char >= 'A' && resposta_char <= 'D') {
+            break;
+        }
+    }
+    
+    // 3. Processa a resposta e atualiza o estado do jogador (vidas/pontos)
+    // Esta função deve mostrar o resultado e esperar o ENTER do usuário.
+    Pergunta_ProcessarResposta(jogador, &pergunta_atual, resposta_char);
+
+    // O Game Loop será retomado quando esta função terminar.
+}
 
 // ==============================================================
 // 3. O GAME LOOP PRINCIPAL
@@ -146,6 +164,14 @@ void GameLoop(Jogador *jogador) {
     
     while (jogador->vidas > 0) { 
         
+        // --- 3.1 LÓGICA DE PERGUNTA ---
+        // A Flag é ativada em Jogador_Atualizar quando toca na plataforma PERGUNTA
+        if (jogador->ativar_pergunta == 1) {
+            // AQUI O JOGO PAUSA E A INTERFACE DE PERGUNTA É ATIVADA
+            ProcessarPergunta(jogador);
+            jogador->ativar_pergunta = 0; // Reseta a flag
+        }
+        
         // 1. PROCESSAMENTO DE INPUT (Teclado)
         if (keyhit()) {
             char key = readch();
@@ -153,12 +179,15 @@ void GameLoop(Jogador *jogador) {
             if (key == 'q' || key == 'Q') 
                 break; 
             
-            if (key == 'a' || key == 'A') {
-                Jogador_MoverHorizontal(jogador, -1); 
-            } else if (key == 'd' || key == 'D') {
-                Jogador_MoverHorizontal(jogador, 1);  
-            } else if (key == ' ' || key == 10) { 
-                Jogador_Pular(jogador);
+            // Movimentos são processados SOMENTE se o jogo não estiver no modo Pergunta
+            if (jogador->ativar_pergunta == 0) {
+                 if (key == 'a' || key == 'A') {
+                    Jogador_MoverHorizontal(jogador, -1); 
+                } else if (key == 'd' || key == 'D') {
+                    Jogador_MoverHorizontal(jogador, 1);  
+                } else if (key == ' ' || key == 10) { 
+                    Jogador_Pular(jogador);
+                }
             }
         }
         
@@ -178,7 +207,7 @@ void GameLoop(Jogador *jogador) {
             
             // 3. ATUALIZAÇÃO DA TELA (Desenho)
             screenClear(); 
-            screenInit(1); // Redesenha bordas
+            screenInit(1); 
             
             // Desenha objetos do jogo
             Jogador_Desenhar(jogador);
