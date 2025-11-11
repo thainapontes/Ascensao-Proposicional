@@ -3,6 +3,7 @@
 #include "screen.h" 
 #include "keyboard.h" 
 #include "timer.h" 
+#include "visual.h"
 
 int main() {
     screenInit(1); // inicializar a tela e desenha as bordas
