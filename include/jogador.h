@@ -3,14 +3,16 @@
 
 #include "tipos.h"
 
-// definiçao struct jogador
 struct Jogador {
-    int x; // Posição horizontal na tela
-    int y; // Posição vertical na tela
-    int velocidade_y; //  Campo para simulação de física (aq ele vai simular queda e pulo)
-    int pontuacao;
+    int x;
+    int y;
+    int velocidade_y;
+    int velocidade_x;
     int vidas;
-    char simbolo; 
+    int pontuacao;
+    char simbolo;
+    int pontuacao_base_bounus; // Para o requisito de Recursividade
+    int ativar_pergunta;       // <--- NOVO: Flag para comunicar ao main.c
 };
 
 // apenas o prototipo das funções, para a maquina saber  q elas existem
