@@ -1,34 +1,25 @@
-#ifndef __PERGUNTA_H__
-#define __PERGUNTA_H__
+#ifndef PERGUNTA_H
+#define PERGUNTA_H
+#include "jogador.h"
+#include "tipos.h" // Inclui os ENUMs e struct Jogador
 
-#include "tipos.h" // Contém a declaração antecipada e outros tipos
-#include "jogador.h" // Para atualizar pontuação/vidas
-
-
-// O COMPILADOR PRECISA DISSO PARA CRIAR O BANCO DE PERGUNTAS (array) em pergunta.c
-
+// Definição da estrutura para uma única Pergunta
 typedef struct {
-    char *texto; 
-    char *opcoes[4]; 
-    int respostaCorreta; 
-} Pergunta; 
+    char *texto;            // Ponteiro para o texto principal da pergunta
+    char *opcoes[4];        // Array de ponteiros para as opções (A, B, C, D)
+    int resposta_correta;   // Índice da resposta correta (0 a 3)
+} Pergunta;
 
+// Variáveis Globais (Gerenciadas pelo módulo Pergunta)
+// O array de structs que será alocado dinamicamente
+extern Pergunta *banco_perguntas; 
+extern int total_perguntas;
 
+// Protótipos das funções
 void Pergunta_InicializarBanco();
-
 void Pergunta_DestruirBanco();
-
-void Pergunta_GerarAleatoria(Pergunta *p);
-
+void Pergunta_GerarAleatoria(Pergunta *dest);
 void Pergunta_DesenharInterface(Pergunta *p);
+void Pergunta_ProcessarResposta(Jogador *j, Pergunta *p, char resposta_usuario);
 
-/**
- * Processa a resposta do usuário e atualiza o jogador (pontuação/vida).
- * @param jogador O jogador que respondeu.
- * @param p A pergunta em questão.
- * @param respostaA O caractere da resposta do usuário (ex: 'A', 'B', 'C').
- * @return 1 se a resposta estiver correta, 0 caso contrário.
- */
-int Pergunta_ProcessarResposta(Jogador *jogador, Pergunta *p, char respostaA);
-
-#endif // __PERGUNTA_H__
+#endif // PERGUNTA_H
