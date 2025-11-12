@@ -89,25 +89,32 @@ void Plataforma_Desenhar(Plataforma *p) {
 }
 
 int Plataforma_VerificarColisao(Jogador *jogador, Plataforma *p) {
-    // 1. Verifica se o jogador está na mesma linha vertical que a plataforma
-    if (jogador->y != p->y) {
-        return 0; // Sem colisão vertical
+    
+    // Não verifica colisão se a plataforma já foi usada (ex: quebrada)
+    if (p->usada && p->tipo == QUEBRAVEL) {
+        return 0;
     }
-
-    // 2. Verifica se a colisão é POR CIMA (se o jogador estava caindo)
-    if (jogador->velocidade_y < 0) {
-        return 0; // Está subindo, não pode pousar
-    }
-
-    // 3. Verifica se o jogador está horizontalmente SOBRE a plataforma
-    if (jogador->x >= p->x && jogador->x < (p->x + p->largura)) {
+    
+    // --- 1. COLISÃO VERTICAL (POUSO) ---
+    // A colisão só ocorre se:
+    // a) O jogador está caindo (velocidade_y > 0, pois Y cresce para baixo)
+    // b) O jogador está na linha imediatamente acima da plataforma (p->y - 1)
+    if (jogador->velocidade_y > 0 && jogador->y == (p->y - 1)) {
         
-        if (p->tipo == QUEBRAVEL) {
-            p->usada = 1; // Manda o flag para ser removida/quebrada
+        // --- 2. COLISÃO HORIZONTAL ---
+        // Verifica se o jogador está horizontalmente SOBRE a plataforma.
+        if (jogador->x >= p->x && jogador->x < (p->x + p->largura)) {
+            
+            // Lógica para Plataforma Quebrável: Marca como usada para não desenhar mais
+            if (p->tipo == QUEBRAVEL) {
+                 p->usada = 1; 
+            }
+            
+            // Colisão de pouso confirmada!
+            return 1;
         }
-        
-        return 1; // Colisão detectada!
     }
 
+    // Não houve colisão
     return 0;
 }
