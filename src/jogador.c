@@ -138,8 +138,12 @@ void Jogador_Atualizar(Jogador *jogador, Plataforma plataformas[], int num_plata
 // FUNÇÃO RECURSIVA (Obrigatória para PIF)
 // ==========================================================
 long long Jogador_CalcularFatorial(int n) {
-    if (n <= 1) {
+    // 1. Caso Base: Condição de Parada
+    if (n == 0) {
         return 1;
     }
-    return n * Jogador_CalcularFatorial(n - 1);
+    
+    // 2. Passo Recursivo: A função chama a si mesma
+    // n! = n * (n-1)!
+    return (long long)n * Jogador_CalcularFatorial(n - 1);
 }
