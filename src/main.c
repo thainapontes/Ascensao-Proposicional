@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h> // Necessário para toupper (se for usado na lógica de resposta)
+#include <ctype.h> 
+#include <time.h>
+#include <unistd.h>// Necessário para toupper (se for usado na lógica de resposta)
 
 // Módulos da CLI-lib
 #include "screen.h"     
