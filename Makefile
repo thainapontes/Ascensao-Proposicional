@@ -22,7 +22,7 @@ CFLAGS = -Wall -Wextra -g -I$(INCLUDE_DIR)
 
 # Flags de Linkagem:
 # -lncurses: Usada pela CLI-lib para controle de terminal
-LDFLAGS = -lncursesW
+LDFLAGS = -lncursesw
 
 # ==========================================================
 # DEFINIÇÃO DOS ARQUIVOS FONTE (.c)
