@@ -13,11 +13,11 @@ $(TARGET): $(OBJS)
   $(CC) $(CFLAGS) $(OBJS) -o $(TARGET) $(LDFLAGS)
 
 $(BUILD_DIR):
-mkdir -p $(BUILD_DIR)
+  mkdir -p $(BUILD_DIR)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(BUILD_DIR) $(DEPS)
-$(CC) $(CFLAGS) -c $< -o $@
+  $(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY: clean
-clean:
+  clean:
 rm -rf $(BUILD_DIR) $(TARGET)
