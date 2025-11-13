@@ -1,7 +1,7 @@
 #ifndef __PLATAFORMA_H__
 #define __PLATAFORMA_H__
 #include "tipos.h" 
-#include "jogador.h"
+
 
 typedef struct Plataforma {
     int x;
