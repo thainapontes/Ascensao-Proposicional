@@ -5,12 +5,12 @@ INCLUDE_DIR = include
 CC = gcc
 CFLAGS = -Wall -Wextra -g -I$(INCLUDE_DIR)
 LDFLAGS = -lncurses -lrt
-SRCS = $(wildcard $(SRC_DIR)/.c)
+SRCS = $(wildcard $(SRC_DIR)/*.c)
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRCS))
-DEPS = $(wildcard $(INCLUDE_DIR)/.h)
+DEPS = $(wildcard $(INCLUDE_DIR)/*.h)
 
 $(TARGET): $(OBJS)
-  $(CC) $(CFLAGS) $(OBJS) -o $(TARGET) $(LDFLAGS)
+  $(CC) $(CFLAGS) $(OBJS) -o $(TARGET) -lrt -lncurses
 
 $(BUILD_DIR):
   mkdir -p $(BUILD_DIR)
