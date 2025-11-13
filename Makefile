@@ -10,7 +10,7 @@ OBJS = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRCS))
 DEPS = $(wildcard $(INCLUDE_DIR)/.h)
 
 $(TARGET): $(OBJS)
-$(CC) $(CFLAGS) $(OBJS) -o $(TARGET) $(LDFLAGS)
+  $(CC) $(CFLAGS) $(OBJS) -o $(TARGET) $(LDFLAGS)
 
 $(BUILD_DIR):
 mkdir -p $(BUILD_DIR)
