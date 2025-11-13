@@ -5,7 +5,8 @@ INCLUDE_DIR = include
 CC = gcc
 CFLAGS = -Wall -Wextra -g -I$(INCLUDE_DIR)
 LDFLAGS = -lncurses -lrt
-SRCS = $(wildcard $(SRC_DIR)/*.c)
+# Linhas corrigidas para listar todos os arquivos .c:
+SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/screen.c $(SRC_DIR)/keyboard.c $(SRC_DIR)/timer.c $(SRC_DIR)/plataforma.c $(SRC_DIR)/pergunta.c $(SRC_DIR)/jogador.c $(SRC_DIR)/tipos.c $(SRC_DIR)/visual.c
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRCS))
 DEPS = $(wildcard $(INCLUDE_DIR)/*.h)
 
