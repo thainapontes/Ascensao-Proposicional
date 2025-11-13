@@ -30,15 +30,15 @@ LDFLAGS = -lncurses
 
 # 1. Módulos da CLI-lib (biblioteca do professor)
 CLI_SOURCES = $(SRC_DIR)/screen.c \
-              $(SRC_DIR)/keyboard.c \
-              $(SRC_DIR)/timer.c
+              $(SRC_DIR)/keyboard.c \
+              $(SRC_DIR)/timer.c
 
 # 2. Módulos do Jogo (seus módulos)
 GAME_SOURCES = $(SRC_DIR)/main.c \
-               $(SRC_DIR)/jogador.c \
-               $(SRC_DIR)/plataforma.c \
-               $(SRC_DIR)/pergunta.c \
-               $(SRC_DIR)/visual.c
+               $(SRC_DIR)/jogador.c \
+               $(SRC_DIR)/plataforma.c \
+               $(SRC_DIR)/pergunta.c \
+               $(SRC_DIR)/visual.c
 
 # Combina todos os arquivos .c
 C_SOURCES = $(CLI_SOURCES) $(GAME_SOURCES)
@@ -62,6 +62,7 @@ $(BUILD_DIR):
 # ----------------------------------------------------------
 # Regra 1: Linkar os objetos para criar o executável final
 # Depende de todos os arquivos .o estarem prontos.
+# A ORDEM CORRETA É: $(OBJETOS) ANTES DE $(LDFLAGS)
 # ----------------------------------------------------------
 $(EXEC): $(O_OBJECTS)
 	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
