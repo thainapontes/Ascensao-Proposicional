@@ -91,6 +91,7 @@ void Jogador_Atualizar(Jogador *jogador, Plataforma plataformas[], int num_plata
             break; 
         }
     }
+}
     // FUNÇÃO CRÍTICA: FÍSICA E COLISÃO
 void Jogador_Atualizar(Jogador *jogador, Plataforma plataformas[], int num_plataformas) {
     
@@ -120,6 +121,7 @@ void Jogador_Atualizar(Jogador *jogador, Plataforma plataformas[], int num_plata
         }
     }
 
+
     // 3. CHECAGEM DE CHÃO/FIM DE JOGO
     if (jogador->y >= SCRENDY) {
         jogador->vidas--;
@@ -132,7 +134,6 @@ void Jogador_Atualizar(Jogador *jogador, Plataforma plataformas[], int num_plata
             // O loop principal em main.c irá encerrar o jogo.
         }
     }
-}
 
 // ==========================================================
 // FUNÇÃO RECURSIVA (Obrigatória para PIF)
