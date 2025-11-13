@@ -3,6 +3,7 @@
 
 #include "tipos.h"
 #include "plataforma.h"
+#include "timer.h"
 
 typedef struct Jogador {
     int x;
