@@ -2,6 +2,7 @@
 #define __JOGADOR_H__
 
 #include "tipos.h"
+#include "plataforma.h"
 
 struct Jogador {
     int x;
