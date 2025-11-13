@@ -1,120 +1,111 @@
 #include <stdio.h>
-#include <stdlib.h>     // Para rand() e srand() (usamos rand() para definir a posição e o tipo da plataforma, ela gera numeros pseudoaleatórios)
-#include <time.h>       //usamos srand usada para inicializar o gerador de números pseudoaleatórios. Ela define o ponto de partida (a semente) para a sequência que a função rand() irá gerar.)
+#include <stdlib.h>
+#include <time.h>
 #include "plataforma.h"
-#include "screen.h"     // Para desenho (screenGotoxy, screenSetColor)
-#include "jogador.h"    // Para a struct Jogador (necessário na Colisao)
+#include "screen.h"
+#include "jogador.h"
 
-static int semente_inicializada = 0; // Flag estática
-static void inicializar_semente() {
-    if (!semente_inicializada) {
-        srand(time(NULL));//para garantir que as plataformas geradas sejam diferentes a cada vez que o programa é executado
+static int semente_inicializada = 0;
+static void inicializar_semente()
+{
+    if (!semente_inicializada)
+    {
+        srand(time(NULL));
         semente_inicializada = 1;
     }
 }
 
-void Plataforma_GerarNova(Plataforma *p, int y_inicial) {
+void Plataforma_GerarNova(Plataforma *p, int y_inicial)
+{
     inicializar_semente();
 
-    // 1. Posição e Dimensão
-    p->x = SCRSTARTX + (rand() % (SCRENDX - SCRSTARTX - 5)); 
+    p->x = SCRSTARTX + (rand() % (SCRENDX - SCRSTARTX - 5));
     p->y = y_inicial;
-    p->largura = 8 + (rand() % 5); 
+    p->largura = 8 + (rand() % 5);
 
-    // 2. Tipo da Plataforma (com chance de ser especial)
     int chance = rand() % 100;
-    
-    if (chance < 80) {
-        p->tipo = NORMAL; // 80% de chance
-    } else if (chance < 90) {
-        p->tipo = PERGUNTA; // 10% de chance
-    } else {
-        p->tipo = QUEBRAVEL; // 10% de chance
+
+    if (chance < 80)
+    {
+        p->tipo = NORMAL;
     }
-    
-    p->usada = 0; // Estado inicial (não usada)
+    else if (chance < 90)
+    {
+        p->tipo = PERGUNTA;
+    }
+    else
+    {
+        p->tipo = QUEBRAVEL;
+    }
+
+    p->usada = 0;
 }
 
-/**
- * Desenha a plataforma na tela usando cores e caracteres BOX.
- * @param p Ponteiro para a struct Plataforma.
- */
-void Plataforma_Desenhar(Plataforma *p) {
-    // Se a plataforma for quebrável e já tiver sido usada, não a desenha.
-    // Isso simula a quebra da plataforma.
-    if (p->tipo == QUEBRAVEL && p->usada == 1) {
-        return; 
+void Plataforma_Desenhar(Plataforma *p)
+{
+    if (p->tipo == QUEBRAVEL && p->usada == 1)
+    {
+        return;
     }
-    
+
     char caractere = BOX_HLINE;
     screenColor cor = GREEN;
-    
-    // 1. Define a cor e o símbolo (com base no ENUM)
-    switch (p->tipo) {
-        case NORMAL:
-            cor = GREEN;
-            caractere = BOX_HLINE; // Linha horizontal da CLI-lib
-            break;
-        case PERGUNTA:
-            cor = BLUE; // Plataforma de pergunta lógica
-            caractere = '?';
-            break;
-        case QUEBRAVEL:
-            cor = LIGHTGRAY; // Plataforma quebrável (cinza/frágil)
-            caractere = BOX_DIAMOND; // Símbolo de diamante
-            break;
-        case PROP_LOGICA:
-            cor = YELLOW; // Plataforma de proposição (P ou Q)
-            caractere = BOX_BLOCK; // Bloco sólido
-            break;
+    switch (p->tipo)
+    {
+    case NORMAL:
+        cor = GREEN;
+        caractere = BOX_HLINE;
+        break;
+    case PERGUNTA:
+        cor = BLUE;
+        caractere = '?';
+        break;
+    case QUEBRAVEL:
+        cor = LIGHTGRAY;
+        caractere = BOX_DIAMOND;
+        break;
+    case PROP_LOGICA:
+        cor = YELLOW;
+        caractere = BOX_BLOCK;
+        break;
     }
 
     screenSetColor(cor, BLACK);
-    screenBoxEnable(); // Habilita o modo de desenho de caixas
+    screenBoxEnable();
 
-    // 2. Desenha a linha da plataforma
-    for (int i = 0; i < p->largura; i++) {
+    for (int i = 0; i < p->largura; i++)
+    {
         screenGotoxy(p->x + i, p->y);
-        
-        // Se for uma plataforma de pergunta, só o centro deve ter o '?'
-        if (p->tipo == PERGUNTA && i != p->largura / 2) {
-             printf("%c", BOX_HLINE);
-        } else {
-             printf("%c", caractere);
+        if (p->tipo == PERGUNTA && i != p->largura / 2)
+        {
+            printf("%c", BOX_HLINE);
+        }
+        else
+        {
+            printf("%c", caractere);
         }
     }
-    
-    screenBoxDisable(); // Desabilita o modo de desenho de caixas
-    screenSetNormal(); // Reseta as cores
+
+    screenBoxDisable();
+    screenSetNormal();
 }
 
-int Plataforma_VerificarColisao(Jogador *jogador, Plataforma *p) {
-    
-    // Não verifica colisão se a plataforma já foi usada (ex: quebrada)
-    if (p->usada && p->tipo == QUEBRAVEL) {
+int Plataforma_VerificarColisao(Jogador *jogador, Plataforma *p)
+{
+    if (p->usada && p->tipo == QUEBRAVEL)
+    {
         return 0;
     }
-    
-    // --- 1. COLISÃO VERTICAL (POUSO) ---
-    // A colisão só ocorre se:
-    // a) O jogador está caindo (velocidade_y > 0, pois Y cresce para baixo)
-    // b) O jogador está na linha imediatamente acima da plataforma (p->y - 1)
-    if (jogador->velocidade_y > 0 && jogador->y == (p->y - 1)) {
-        
-        // --- 2. COLISÃO HORIZONTAL ---
-        // Verifica se o jogador está horizontalmente SOBRE a plataforma.
-        if (jogador->x >= p->x && jogador->x < (p->x + p->largura)) {
-            
-            // Lógica para Plataforma Quebrável: Marca como usada para não desenhar mais
-            if (p->tipo == QUEBRAVEL) {
-                 p->usada = 1; 
+    if (jogador->velocidade_y > 0 && jogador->y == (p->y - 1))
+    {
+        if (jogador->x >= p->x && jogador->x < (p->x + p->largura))
+        {
+            if (p->tipo == QUEBRAVEL)
+            {
+                p->usada = 1;
             }
-            
-            // Colisão de pouso confirmada!
             return 1;
         }
     }
-
-    // Não houve colisão
     return 0;
 }

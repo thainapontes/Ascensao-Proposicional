@@ -4,8 +4,8 @@
 #include "tipos.h"
 #include "plataforma.h"
 
-
-typedef struct Jogador {
+typedef struct Jogador
+{
     int x;
     int y;
     int velocidade_y;
@@ -13,16 +13,15 @@ typedef struct Jogador {
     int vidas;
     int pontuacao;
     char simbolo;
-    int pontuacao_base_bounus; // Para o requisito de Recursividade
-    int ativar_pergunta;       // <--- NOVO: Flag para comunicar ao main.c
-}Jogador;
+    int pontuacao_base_bounus;
+    int ativar_pergunta;
+} Jogador;
 
-// apenas o prototipo das funções, para a maquina saber  q elas existem
 void Jogador_Inicializar(Jogador *jogador);
 void Jogador_Atualizar(Jogador *j, Plataforma plataformas[], int num_plataformas);
-void Jogador_Pular(Jogador *j); 
+void Jogador_Pular(Jogador *j);
 void Jogador_Desenhar(Jogador *j);
 void Jogador_MoverHorizontal(Jogador *jogador, int direcao);
-long long Jogador_CalcularFatorial(int n); //RECURSIVIDADE: Calcula o fatorial de um número para pontuação bônus.
+long long Jogador_CalcularFatorial(int n);
 
-#endif 
+#endif
