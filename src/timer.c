@@ -1,4 +1,5 @@
 #include "timer.h"
+#include <unistd.h>
 #include <sys/time.h>
 #include <stdio.h>
 
@@ -45,4 +46,10 @@ int timerTimeOver()
 void timerPrint()
 {
     printf("Timer:  %d", getTimeDiff());
+}
+
+void timerSleep(int ms) {
+    // 1 milissegundo (ms) = 1000 microsegundos (us)
+    // Multiplicamos o tempo em ms por 1000 para converter para microsegundos.
+    usleep(ms * 1000);
 }
