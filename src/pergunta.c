@@ -3,6 +3,7 @@
 #include <string.h>
 #include <time.h>   // Para srand
 #include <ctype.h>  // Para toupper
+#include <timer.h>
 
 #include "pergunta.h"
 #include "screen.h"
@@ -14,8 +15,8 @@
 // ==========================================================
 
 // O ponteiro que será alocado dinamicamente
-static Pergunta *banco_perguntas = NULL; 
-static int total_perguntas = 0; // Armazena o tamanho real do banco
+Pergunta *banco_perguntas = NULL; 
+int total_perguntas = 0; // Armazena o tamanho real do banco
 static int banco_inicializado = 0;
 static int semente_inicializada = 0;
 
