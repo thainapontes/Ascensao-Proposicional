@@ -42,7 +42,7 @@ void Jogador_MoverHorizontal(Jogador *jogador, int direcao) {
     jogador->x += jogador->velocidade_x *direcao;
     
     if (jogador->x < SCRSTARTX) {
-        jogador->x = SCRSTARTX);
+        jogador->x = SCRSTARTX;
     }
    
     if (jogador->x >= SCRENDX){
