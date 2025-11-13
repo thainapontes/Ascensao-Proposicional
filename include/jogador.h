@@ -4,7 +4,7 @@
 #include "tipos.h"
 #include "plataforma.h"
 
-struct Jogador {
+typedef struct Jogador {
     int x;
     int y;
     int velocidade_y;
@@ -14,7 +14,7 @@ struct Jogador {
     char simbolo;
     int pontuacao_base_bounus; // Para o requisito de Recursividade
     int ativar_pergunta;       // <--- NOVO: Flag para comunicar ao main.c
-};
+}Jogador;
 
 // apenas o prototipo das funções, para a maquina saber  q elas existem
 void Jogador_Inicializar(Jogador *jogador);
