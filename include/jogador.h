@@ -19,6 +19,8 @@ typedef struct Jogador {
 // apenas o prototipo das funções, para a maquina saber  q elas existem
 void Jogador_Inicializar(Jogador *jogador);
 void Jogador_Atualizar(Jogador *j, Plataforma plataformas[], int num_plataformas);
+void Jogador_Pular(Jogador *j); 
+void Jogador_Desenhar(Jogador *j);
 void Jogador_MoverHorizontal(Jogador *jogador, int direcao);
 long long Jogador_CalcularFatorial(int n); //RECURSIVIDADE: Calcula o fatorial de um número para pontuação bônus.
 
