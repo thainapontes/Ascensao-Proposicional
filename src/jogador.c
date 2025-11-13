@@ -38,7 +38,7 @@ void Jogador_Desenhar(Jogador *jogador) {
     screenSetNormal();
 }
 
-void Jogador_MoverHorizontal(Jogador *jogador, int direcao) { 
+void Jogador_MoverHorizontal(Jogador *jogador, int direcao) {
     jogador->x += jogador->velocidade_x * direcao;
      
     if (jogador->x < SCRSTARTX) {
@@ -51,8 +51,8 @@ void Jogador_MoverHorizontal(Jogador *jogador, int direcao) { 
 
 void Jogador_Pular(Jogador *jogador) {
     // Só permite pular se estiver parado (velocidade 0)
-    if (jogador->velocidade_y == 0) { 
-        jogador->velocidade_y = FORCA_PULO; 
+    if (jogador->velocidade_y == 0) {
+        jogador->velocidade_y = FORCA_PULO;
     }
 }
 
