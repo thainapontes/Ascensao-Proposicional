@@ -146,4 +146,4 @@ long long Jogador_CalcularFatorial(int n) {
     // 2. Passo Recursivo: A função chama a si mesma
     // n! = n * (n-1)!
     return (long long)n * Jogador_CalcularFatorial(n - 1);
-}
+    }
