@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 #include "jogador.h"
 #include "plataforma.h" // NECESSÁRIO para chamar Plataforma_VerificarColisao
 #include "screen.h"     // para as constantes SCRSTARTX, SCRENDY, etc.
@@ -39,12 +38,14 @@ void Jogador_Desenhar(Jogador *jogador) {
 }
 
 void Jogador_MoverHorizontal(Jogador *jogador, int direcao) {
-    jogador->x += jogador->velocidade_x * direcao;
-     
+    
+    jogador->x += jogador->velocidade_x *direcao;
+    
     if (jogador->x < SCRSTARTX) {
-        jogador->x = SCRSTARTX;
+        jogador->x = SCRSTARTX);
     }
-    if (jogador->x >= SCRENDX) { // Usa SCRENDX - 1 se for o limite do caractere
+   
+    if (jogador->x >= SCRENDX){
         jogador->x = SCRENDX - 1;
     }
 }
