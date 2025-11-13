@@ -19,5 +19,5 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(BUILD_DIR) $(DEPS)
   $(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY: clean
-  clean:
-rm -rf $(BUILD_DIR) $(TARGET)
+clean:
+  rm -rf $(BUILD_DIR) $(TARGET)
