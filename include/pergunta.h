@@ -4,7 +4,7 @@
 #include "tipos.h" // Inclui os ENUMs e struct Jogador
 
 // Definição da estrutura para uma única Pergunta
-typedef struct {
+typedef struct Pergunta {
     char *texto;            // Ponteiro para o texto principal da pergunta
     char *opcoes[4];        // Array de ponteiros para as opções (A, B, C, D)
     int resposta_correta;   // Índice da resposta correta (0 a 3)
