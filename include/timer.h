@@ -6,4 +6,6 @@ void timerUpdateTimer(int valueMilliSec);
 
 int timerTimeOver();
 
+void timerSleep(int ms);
+
 void timerPrint();
