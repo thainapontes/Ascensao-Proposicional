@@ -8,12 +8,11 @@
 #include "keyboard.h"   
 #include "timer.h"      
 
-// Módulos do Jogo
-#include "tipos.h"      
-#include "jogador.h"
-#include "plataforma.h"
-#include "pergunta.h"
-#include "visual.h"     
+#include "plataforma.h" // Definição completa
+#include "pergunta.h"   // Definição completa
+#include "jogador.h"    // Usa as definições Plataforma (via inclusão interna)
+#include "tipos.h"      // Tem declarações antecipadas (melhor incluir aqui)
+#include "visual.h"
 
 #define NUM_PLATAFORMAS 10 
 #define TEMPO_ATUALIZACAO 50 // 50ms = 20 FPS
