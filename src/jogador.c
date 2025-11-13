@@ -120,6 +120,7 @@ void Jogador_Atualizar(Jogador *jogador, Plataforma plataformas[], int num_plata
             break; 
         }
     }
+}
 
 
     // 3. CHECAGEM DE CHÃO/FIM DE JOGO
