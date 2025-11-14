@@ -4,9 +4,9 @@
 void keyboardInit();
 
 void keyboardDestroy();
-    
+
 int keyhit();
 
 int readch();
 
-#endif /* __KEYBOARD_H__ */
+#endif

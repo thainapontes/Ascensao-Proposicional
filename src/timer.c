@@ -26,8 +26,8 @@ void timerUpdateTimer(int valueMilliSec)
 int getTimeDiff()
 {
     gettimeofday(&now, NULL);
-    long diff = (((now.tv_sec - timer.tv_sec) * 1000000) + now.tv_usec - timer.tv_usec)/1000;
-    return (int) diff;
+    long diff = (((now.tv_sec - timer.tv_sec) * 1000000) + now.tv_usec - timer.tv_usec) / 1000;
+    return (int)diff;
 }
 
 int timerTimeOver()
@@ -48,8 +48,7 @@ void timerPrint()
     printf("Timer:  %d", getTimeDiff());
 }
 
-void timerSleep(int ms) {
-    // 1 milissegundo (ms) = 1000 microsegundos (us)
-    // Multiplicamos o tempo em ms por 1000 para converter para microsegundos.
+void timerSleep(int ms)
+{
     usleep(ms * 1000);
 }
