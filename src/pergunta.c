@@ -18,14 +18,6 @@
 Pergunta *banco_perguntas = NULL; 
 int total_perguntas = 0; // Armazena o tamanho real do banco
 static int banco_inicializado = 0;
-static int semente_inicializada = 0;
-
-static void inicializar_semente() {
-    if (!semente_inicializada) {
-        srand(time(NULL));
-        semente_inicializada = 1;
-    }
-}
 
 // ----------------------------------------------------------
 // FUNÇÕES DE INICIALIZAÇÃO E DESTRUIÇÃO (MALLOC / FREE)

@@ -1,7 +1,9 @@
 #ifndef __PLATAFORMA_H__
 #define __PLATAFORMA_H__
-#include "tipos.h" 
+#include "tipos.h"
 
+// Declaração antecipada de Jogador para evitar inclusão circular
+typedef struct Jogador Jogador;
 
 typedef struct Plataforma {
     int x;

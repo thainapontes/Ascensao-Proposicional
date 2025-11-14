@@ -1,7 +1,9 @@
 #ifndef PERGUNTA_H
 #define PERGUNTA_H
-#include "jogador.h"
-#include "tipos.h" // Inclui os ENUMs e struct Jogador
+#include "tipos.h"
+
+// Declaração antecipada para evitar inclusão circular
+typedef struct Jogador Jogador;
 
 // Definição da estrutura para uma única Pergunta
 typedef struct Pergunta {
